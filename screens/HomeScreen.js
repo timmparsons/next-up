@@ -1,7 +1,6 @@
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native'
+import { StyleSheet, SafeAreaView } from 'react-native'
 import React from 'react'
-import Search from '../components/Search';
-import ProfileBar from '../components/ProfileBar';
+import { ProfileBar, Categories } from '../components';
 
 const HomeScreen = () => {
   return (
@@ -9,7 +8,7 @@ const HomeScreen = () => {
 			styles={styles.container}
 		>
 			<ProfileBar />
-      <Search />
+			<Categories />
     </SafeAreaView>
   );
 }

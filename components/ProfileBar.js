@@ -1,19 +1,26 @@
-import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
+import Search from './Search';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { Feather } from '@expo/vector-icons'; 
+import { NAME } from '../constants';
 
 const ProfileBar = () => {
 	return (
+		<View>
 		<View style={styles.container}>
 			<TouchableOpacity>
 				<Feather name="menu" size={24} color="black" />
 			</TouchableOpacity>
 			<View>
-				<Text>Hi Tim!</Text>
+				<Text>Hi {NAME}!</Text>
 			</View>
 			<TouchableOpacity>
 				<Feather name="bell" size={24} color="black" />
 			</TouchableOpacity>
+		</View>
+		<View>
+			<Search />
+		</View>
 		</View>
 	)
 }
