@@ -1,21 +1,24 @@
-import React from 'react'
-import { View, Text, ScrollView } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native'
 import { CATEGORIES } from '../constants/categoriesData'
 import { MaterialIcons } from '@expo/vector-icons'; 
-import { TouchableOpacity } from 'react-native-web';
 
 const Categories = () => {
+	const [ activeCategory, setActiveCategory ] = useState('')
+
 	return (
 		<ScrollView 
 			horizontal
 			contentContainerStyle={{ paddingHorizontal: 15}}
 		>
-		{CATEGORIES.map((data, index) => {
+		{CATEGORIES.map(({category}, index) => {
+			let isActive = category == activeCategory;
+			let activeButton = isActive ? '#ff7276' : '';
+
 			return (
-				<TouchableOpacity key={index}>
-					<View>
-						<MaterialIcons name={data.icon} size={24} color="darkgray" />
-						<Text>{data.category}</Text>
+				<TouchableOpacity key={index} onPress={() => setActiveCategory(category)}>
+					<View style={styles.category}>
+						<Text style={styles.categoryText(activeButton)}>{category}</Text>
 					</View>
 				</TouchableOpacity>
 			)
@@ -23,5 +26,18 @@ const Categories = () => {
 		</ScrollView>
 	)
 }
+
+const styles = StyleSheet.create({
+	category: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		paddingHorizontal: 70,
+		paddingVertical: 15
+	},
+		categoryText: activeButton => ({
+			fontSize: 24,
+			color: activeButton
+		})
+})
 
 export default Categories
