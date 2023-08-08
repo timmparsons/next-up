@@ -6,5 +6,13 @@ export const CATEGORIES = [
 	{
 		category: 'TV',
 		icon: 'tv'
+	},
+	{
+		category: 'Hulu',
+		icon: 'hulu'
+	},
+	{
+		category: 'Netflix',
+		icon: 'netflix'
 	}
 ]

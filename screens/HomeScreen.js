@@ -1,14 +1,25 @@
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, SafeAreaView } from 'react-native'
-import React from 'react'
-import { ProfileBar, Categories } from '../components';
+import { ProfileBar, Categories, ShowList } from '../components';
+import { apiCall } from '../api';
 
 const HomeScreen = () => {
+	const [ movies, setMovies ] = useState([]);
+
+	useEffect(() => {
+		apiCall()
+		.then(movie => {
+			setMovies(movie)
+		})
+	}, []); 
+
   return (
     <SafeAreaView
 			styles={styles.container}
 		>
 			<ProfileBar />
 			<Categories />
+			<ShowList shows={movies}/>
     </SafeAreaView>
   );
 }
