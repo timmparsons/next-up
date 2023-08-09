@@ -12,6 +12,11 @@ export const apiCall = async () => {
 		.then(response => response.json())
 }
 
+export const getTvShows = async () => {
+	return await fetch('https://api.themoviedb.org/3/tv/popular?language=en-US&page=1', options)
+		.then(response => response.json())
+}
+
 
 export const apiBaseUrl = 'https://api.themoviedb.org/3';
 const trendingMoviesEndpoint = `${apiBaseUrl}/trending/movie/day?language=en-US`;

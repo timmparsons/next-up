@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image } from 'react-native'
+import { useSelector, useDispatch } from 'react-redux'
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image, Pressable } from 'react-native'
 import { CATEGORIES } from '../constants/categoriesData'
 import { MaterialIcons } from '@expo/vector-icons'; 
-import { apiCall } from '../api';
+import { apiCall, getTvShows } from '../api';
 
 const Categories = () => {
 	const [ activeCategory, setActiveCategory ] = useState('Movies')
+	const dispatch = useDispatch();
+
+	const changeCategory = () => {
+		getTvShows()
+		.then(show => {
+			dispatch(getTvShows(show))
+		})
+	};
 
 	return (
 		<View>
@@ -19,7 +28,9 @@ const Categories = () => {
 				return (
 					<TouchableOpacity key={index} onPress={() => setActiveCategory(category)}>
 						<View style={styles.category}>
-							<Text style={styles.categoryText(isActive)}>{category}</Text>
+							<Pressable onPress={changeCategory}>
+								<Text style={styles.categoryText(isActive)}>{category}</Text>
+							</Pressable>
 						</View>
 					</TouchableOpacity>
 				)

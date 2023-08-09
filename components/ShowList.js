@@ -1,36 +1,43 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet, FlatList } from 'react-native'
 
-const ShowList = ({ shows: { results} }) => {
-	
+const ShowList = ( {shows} ) => {
+	console.log('ZZZ', shows)
 	return (
 		<View>
 			<FlatList
 				numColumns={3}
-				data={results}
+				data={shows}
 				renderItem={({item, index}) => {
-					console.log('qqq', item.original_title.length)
-				return (<View>
+					console.log('qqq', item.original_title)
+				return (
+				<View style={styles.imageContainer}>
 					<Image
 						style={styles.listImage}
 						source={{uri:`https://image.tmdb.org/t/p/w500${item.poster_path}` }} 
 						/>
-						<Text>{item.original_title.length > 12 ? item.original_title.split(0, 12) : item.original_title}</Text>
+						<Text style={styles.showTitle}>{item.original_title.length > 12 ? item.original_title.slice(0, 12) + '...' : item.original_title}</Text>
 					</ View>
 				)}}
+				
 			/>
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
+	imageContainer: {
+		width: '33%',
+		marginHorizontal: 1
+	},
 	listImage: {
-		// flex: 1,
-		flexDirection: 'row',
 		height: 200,
-		marginHorizontal: 7,
-		marginVertical: 5,
-		width: '30%'
+		width: '100%'
+	},
+	showTitle: {
+		padding: 5,
+		fontSize: 18,
+		fontWeight: 'bold'
 	}
 })
 
