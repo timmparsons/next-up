@@ -1,16 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { apiCall } from '../../api'
+import { fetchMovies } from '../extraReducers';
 
 const initialState = {
   movieList: [],
 	status: 'idle',
 	error: null
 }
-
-export const fetchMovies = createAsyncThunk('movies/fetchMovies', async () => {
-	const response = await apiCall()
-	return response
-})
 
 export const movieSlice = createSlice({
   name: 'movies',

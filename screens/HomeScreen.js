@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { StyleSheet, SafeAreaView } from 'react-native'
 import { ProfileBar, Categories, ShowList } from '../components';
-import { apiCall } from '../api';
-import { addMovies, fetchMovies } from '../redux/slices/movieSlice';
+import { fetchMovies } from '../redux/extraReducers';
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
