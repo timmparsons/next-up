@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { fetchTvShows } from '../extraReducers'
 
 const initialState = {
   tvShows: [],
@@ -7,11 +8,21 @@ const initialState = {
 export const tvSlice = createSlice({
   name: 'tv',
   initialState,
-  reducers: {
-    addTvShows: (state, action) => {
-      state.tvShows = action.payload.results
-    }
-  },
+  reducers: {},
+	extraReducers(builder) {
+		builder
+		.addCase(fetchTvShows.pending, (state, action) => {
+			state.status = 'loading'
+		})
+		.addCase(fetchTvShows.fulfilled, (state, action) => {
+			state.status = 'succeeded'
+			state.tvShows = action.payload.results
+		})
+		.addCase(fetchTvShows.rejected, (state, action) => {
+			state.status = 'failed'
+			state.error = action.error.message
+		})
+	}
 })
 
 // Action creators are generated for each case reducer function

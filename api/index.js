@@ -7,18 +7,19 @@ const options = {
 	}
 };
 
-export const apiCall = async () => {
-	return await fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
-		.then(response => response.json())
-}
-
-export const getTvShows = async () => {
-	return await fetch('https://api.themoviedb.org/3/tv/popular?language=en-US&page=1', options)
-		.then(response => response.json())
-}
-
-
 export const apiBaseUrl = 'https://api.themoviedb.org/3';
+
+export const getTrendingMovies = async () => {
+	return await fetch(`${apiBaseUrl}/trending/movie/day?language=en-US`, options)
+		.then(response => response.json())
+}
+
+export const getPopularTvShows = async () => {
+	return await fetch(`${apiBaseUrl}/tv/popular?language=en-US&page=1`, options)
+		.then(response => response.json())
+}
+
+
 const trendingMoviesEndpoint = `${apiBaseUrl}/trending/movie/day?language=en-US`;
 const upcomingMoviesEndpoint = `${apiBaseUrl}/movie/upcoming?language=en-US&page=1`;
 const topRatedMoviesEndpoint = `${apiBaseUrl}/trending/movie/day?language=en-US`;

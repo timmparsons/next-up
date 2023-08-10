@@ -2,18 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image, Pressable } from 'react-native'
 import { CATEGORIES } from '../constants/categoriesData'
-import { MaterialIcons } from '@expo/vector-icons'; 
-import { apiCall, getTvShows } from '../api';
+import { fetchTvShows } from '../redux/extraReducers';
 
 const Categories = () => {
 	const [ activeCategory, setActiveCategory ] = useState('Movies')
 	const dispatch = useDispatch();
 
 	const changeCategory = () => {
-		// getTvShows()
-		// .then(show => {
-		// 	dispatch(getTvShows(show))
-		// })
+		dispatch(fetchTvShows())
 	};
 
 	return (
