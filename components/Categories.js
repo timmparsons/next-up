@@ -10,10 +10,10 @@ const Categories = () => {
 	const dispatch = useDispatch();
 
 	const changeCategory = () => {
-		getTvShows()
-		.then(show => {
-			dispatch(getTvShows(show))
-		})
+		// getTvShows()
+		// .then(show => {
+		// 	dispatch(getTvShows(show))
+		// })
 	};
 
 	return (

@@ -2,14 +2,13 @@ import React from 'react'
 import { View, Text, Image, StyleSheet, FlatList } from 'react-native'
 
 const ShowList = ( {shows} ) => {
-	console.log('ZZZ', shows)
 	return (
 		<View>
 			<FlatList
 				numColumns={3}
 				data={shows}
 				renderItem={({item, index}) => {
-					console.log('qqq', item.original_title)
+
 				return (
 				<View style={styles.imageContainer}>
 					<Image

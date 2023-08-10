@@ -3,18 +3,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import { StyleSheet, SafeAreaView } from 'react-native'
 import { ProfileBar, Categories, ShowList } from '../components';
 import { apiCall } from '../api';
-import { addMovies } from '../redux/slices/movieSlice';
+import { addMovies, fetchMovies } from '../redux/slices/movieSlice';
 
 const HomeScreen = () => {
-	// const [ movies, setMovies ] = useState([]);
-	const movieList = useSelector((state) => state.movies.movies)
   const dispatch = useDispatch()
+	const movieList = useSelector(state => state.movies.movieList)
 
 	useEffect(() => {
-		apiCall()
-		.then(movie => {
-			dispatch(addMovies(movie))
-		})
+			dispatch(fetchMovies())
 	}, []); 
 
   return (
