@@ -12,11 +12,15 @@ export const apiBaseUrl = 'https://api.themoviedb.org/3';
 export const getTrendingMovies = async () => {
 	return await fetch(`${apiBaseUrl}/trending/movie/day?language=en-US`, options)
 		.then(response => response.json())
+		.catch(e => console.error('API Error: ', e))
+
 }
 
 export const getPopularTvShows = async () => {
 	return await fetch(`${apiBaseUrl}/tv/popular?language=en-US&page=1`, options)
 		.then(response => response.json())
+		.catch(e => console.error('API Error: ', e))
+
 }
 
 
