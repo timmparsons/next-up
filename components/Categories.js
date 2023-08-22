@@ -22,8 +22,10 @@ const Categories = () => {
   const movieList = useSelector(selectAllMovies);
   const [activeCategory, setActiveCategory] = useState('Movies');
   const [list, setList] = useState(movieList);
+  const [category, setCategory] = useState('');
 
   const changeCategory = (category) => {
+    setCategory(category);
     setList(category === 'TV' ? tvList : movieList);
     setActiveCategory(category);
   };
@@ -47,7 +49,9 @@ const Categories = () => {
           })}
         </ScrollView>
       </View>
-      {/* <View style={styles.movieList}>{list.length > 0 ? <ShowList shows={list} /> : <ActivityIndicator />}</View> */}
+      <View style={styles.movieList}>
+        <ShowList shows={list} category={category} />
+      </View>
     </View>
   );
 };
